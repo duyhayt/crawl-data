@@ -15,8 +15,8 @@ async function crawlAndSaveJobs() {
     }
 }
 
-// Chạy hàm crawl sau mỗi 1 phút
-cron.schedule('*/1 * * * *', () => {
+// Chạy hàm crawl sau mỗi 59 phút
+cron.schedule('*/59 * * * *', () => {
     console.log('Running a task every 1 minute');
     crawlAndSaveJobs();
 });
