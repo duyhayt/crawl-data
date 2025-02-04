@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job List</title>
+</head>
+<body>
+    <h1>Danh sách việc làm</h1>
+    <ul id="job-list"></ul>
+
+    <script>
+        async function fetchJobs() {
+            const response = await fetch('http://localhost:8000/api/v1/jobs');
+            const jobs = await response.json();
+            
+            const jobList = document.getElementById('job-list');
+            jobs.forEach(job => {
+                let li = document.createElement('li');
+                li.innerHTML = `<strong>${job.job}</strong> - ${job.company} - ${job.address} - ${job.salary}`;
+                jobList.appendChild(li);
+            });
+        }
+
+        fetchJobs();
+    </script>
+</body>
+</html>
