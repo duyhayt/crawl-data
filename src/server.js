@@ -12,6 +12,7 @@ app.use(express.json());
 connectDB();
 
 // Routes
+app.get('/', (req, res) => res.send('Hello World! This is my Job Crawler API'));
 app.use('/api/v1', jobRoutes);
 
 const port = process.env.PORT || 5000;
