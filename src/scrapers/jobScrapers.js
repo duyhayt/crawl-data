@@ -5,7 +5,11 @@ class JobScraper {
     async scrapeJobs() {
         try {
             const { data:html } = await axios.get('https://123job.vn/tuyen-dung', {
-                headers: { 'User-Agent': 'Mozilla/5.0'}
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Referer': 'https://www.google.com',
+                    'Origin': 'https://www.google.com'
+                }
             });
     
             const $ = cheerio.load(html);

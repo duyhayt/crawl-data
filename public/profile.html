@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page - Flutter Developer</title>
+  <style>
+    /* Reset cơ bản */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      line-height: 1.6;
+      color: #333;
+    }
+    .container {
+      max-width: 960px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    header {
+      text-align: center;
+      background: #333;
+      color: #fff;
+      padding: 20px;
+    }
+    header h1 {
+      font-size: 24px;
+    }
+    section {
+      margin: 20px 0;
+    }
+    section h2 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    section p {
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+    ul li {
+      background: #e2e2e2;
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .btn {
+      display: inline-block;
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Phần Header -->
+    <header>
+      <h1>Flutter Developer | Building Smart, Impactful Mobile Applications</h1>
+    </header>
+
+    <!-- Giới thiệu bản thân -->
+    <section id="about">
+      <p>
+        Experienced Flutter Developer with 3+ years of expertise in delivering high-quality, user-focused applications for government, health, and smartwatch sectors.
+        Skilled at combining technical proficiency with creative problem-solving to craft applications that make a real-world impact.
+      </p>
+    </section>
+
+    <!-- Key Skills and Expertise -->
+    <section id="skills">
+      <h2>💻 Key Skills and Expertise</h2>
+      <ul>
+        <li>Architectural Patterns: MVC, MVVM, Clean Architecture</li>
+        <li>State Management: Bloc, Provider</li>
+        <li>Full-Cycle Development: From concept and design to deployment on App Store and Google Play</li>
+        <li>Platform Specialization: Flutter (cross-platform), iOS (Swift, SwiftUI)</li>
+        <li>Project Collaboration Tools: GitLab, Redmine, Trello</li>
+      </ul>
+    </section>
+
+    <!-- Các đóng góp hiện tại -->
+    <section id="current">
+      <p>
+        Currently contributing to the development of smartwatch health applications that streamline fitness tracking and improve user well-being.
+        Passionate about leveraging technology to enhance healthcare accessibility and efficiency, creating products that resonate with users across diverse demographics.
+      </p>
+    </section>
+
+    <!-- Key Strengths -->
+    <section id="strengths">
+      <h2>🌟 Key Strengths</h2>
+      <ul>
+        <li>Collaborating with stakeholders to tailor solutions for unique project needs</li>
+        <li>Mentoring junior developers to foster technical growth within teams</li>
+        <li>Continuously optimizing application performance and scalability</li>
+      </ul>
+    </section>
+
+    <!-- Tầm nhìn -->
+    <section id="vision">
+      <p>
+        Driven by the vision of integrating technology into daily life to solve meaningful challenges and improve user experiences.
+      </p>
+    </section>
+
+    <!-- Phần hiển thị nội dung được lấy từ API -->
+    <section id="apiContent">
+      <!-- Nội dung sẽ được load từ API khi người dùng bấm nút -->
+    </section>
+
+    <!-- Nút gọi API -->
+    <section style="text-align: center;">
+      <a href="#" id="loadApi" class="btn">Load More Info</a>
+    </section>
+  </div>
+
+  <script>
+    // Khi người dùng click vào nút, gọi API để lấy thông tin bổ sung
+    document.getElementById('loadApi').addEventListener('click', function(e) {
+      e.preventDefault();
+      // Ví dụ gọi API bằng fetch. Thay URL dưới đây bằng API thật của bạn.
+      fetch('https://example.com/api/profile')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Giả sử API trả về JSON có thuộc tính "moreInfo"
+          const apiContent = document.getElementById('apiContent');
+          apiContent.innerHTML = `
+            <h2>More About Me</h2>
+            <p>${data.moreInfo}</p>
+          `;
+        })
+        .catch(error => {
+          console.error('Error fetching profile data:', error);
+          document.getElementById('apiContent').innerHTML = '<p>Không thể tải thông tin bổ sung. Vui lòng thử lại sau.</p>';
+        });
+    });
+  </script>
+</body>
+</html>
